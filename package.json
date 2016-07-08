@@ -32,9 +32,12 @@
   "main": "index.js",
   "keywords": [
     "ShaneKing",
-    "SK"
+    "SK",
+    "gulpplugin"
   ],
   "dependencies": {
+    "gulp-util": "^3.0.7",
+    "through2": "^2.0.1"
   },
   "devDependencies": {
     "assert": "^1.4.1",
