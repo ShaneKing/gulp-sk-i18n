@@ -2,7 +2,7 @@ language: node_js
 sudo: false # faster builds
 
 node_js:
-  - stable
+  - "4"
 
 #install: default run: npm install
 

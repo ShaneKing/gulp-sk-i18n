@@ -38,6 +38,7 @@
   "dependencies": {
     "crypto": "^0.0.3",
     "gulp-util": "^3.0.7",
+    "sk-polyfill": "^0.0.10",
     "through2": "^2.0.1"
   },
   "devDependencies": {
@@ -47,7 +48,8 @@
     "gulp": "^3.9.1",
     "istanbul": "^0.4.3",
     "jsdom": "^9.2.1",
-    "mocha": "^2.5.3"
+    "mocha": "^2.5.3",
+    "should": "^9.0.2"
   },
   "commitplease": {
     "nohook": true

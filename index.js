@@ -1,12 +1,14 @@
 'use strict';
 
+require('sk-polyfill');
+
 var Buffer = require('buffer').Buffer;
 var crypto = require('crypto');
 var gUtil = require('gulp-util');
 var path = require('path');
 var through = require('through2');
+
 var File = gUtil.File;
-var PluginError = gUtil.PluginError;
 
 // file can be a vinyl file object or a string
 // when a string it will construct a new one
@@ -18,8 +20,13 @@ module.exports = function (opt) {
   if (!opt.hashLength) {
     opt.hashLength = 8;
   }
+  if (!opt.folderMapping) {
+    opt.folderMapping = {};
+  }
 
   var files = [];
+  var folderLanguageHashObject = {};
+  var folderLanguageHashFile = {};
 
   function jsonNodeParser(jsonObject, existPath, pathObjects) {
     let pathObject = {};
@@ -51,23 +58,25 @@ module.exports = function (opt) {
       return;
     }
 
-    // we don't do streams (yet)
-    if (file.isStream()) {
-      this.emit('error', new PluginError('gulp-sk-i18n', 'Streaming not supported'));
-      cb();
-      return;
-    }
+    var currentPath = file.history[file.history.length - 1];
+    var currentPaths = currentPath.split('/');
+    var jsonFilename = currentPaths[currentPaths.length - 1];
+    var folder = jsonFilename.split('_')[0];
+    var languageFilename = jsonFilename.split(folder)[1];
 
-    // is not json
-    if (file.extname != 'json') {
-      this.emit('error', new PluginError('gulp-sk-i18n', 'just support json'));
-      cb();
-      return;
-    }
+    folder = opt.folderMapping[folder] ? opt.folderMapping[folder] : folder;
 
-    var hashObject = {};
-    var jsonType = file.stem.split('_')[0];
-    var suffixFilename = file.stem.split(jsonType)[1];
+    if (!folderLanguageHashFile[folder + languageFilename]) {
+      folderLanguageHashFile[folder + languageFilename] = new File({
+        cwd: file.cwd,
+        base: file.base,
+        path: path.join(file.base, folder + '_Hash' + languageFilename)
+      });
+    }
+    if (!folderLanguageHashObject[folder + languageFilename]) {
+      folderLanguageHashObject[folder + languageFilename] = {};
+    }
+    var hashObject = folderLanguageHashObject[folder + languageFilename];
 
     var jsonObject = JSON.parse(file.contents.toString());
     var pathObjects = {};
@@ -79,16 +88,10 @@ module.exports = function (opt) {
       files.push(new File({
         cwd: file.cwd,
         base: file.base,
-        path: path.join(file.base, jsonType, pathStr, hashValue + suffixFilename),
+        path: path.join(file.base, folder, pathStr, hashValue + languageFilename),
         contents: new Buffer(strContent)
       }));
     });
-    files.push(new File({
-      cwd: file.cwd,
-      base: file.base,
-      path: path.join(file.base, jsonType + '_Hash' + suffixFilename),
-      contents: new Buffer(JSON.stringify(hashObject))
-    }));
 
     cb();
   }
@@ -96,6 +99,12 @@ module.exports = function (opt) {
   function endStream(cb) {
 
     files.forEach(function (file) {
+      this.push(file);
+    }.bind(this));
+
+    Object.keys(folderLanguageHashFile).forEach(function (folderLanguage) {
+      var file = folderLanguageHashFile[folderLanguage];
+      file.contents = new Buffer(JSON.stringify(folderLanguageHashObject[folderLanguage]));
       this.push(file);
     }.bind(this));
 
