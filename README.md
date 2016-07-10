@@ -2,8 +2,6 @@
 More to see [shaneking.org][].
 
 ## Dependencies
-[![][versioneye img]][versioneye]
-
 [![][david img]][david]
 [![][davidDev img]][davidDev]
 [![][davidPeer img]][davidPeer]
@@ -13,7 +11,6 @@ More to see [shaneking.org][].
 
 ## Test
 [![][codecov img]][codecov]
-[![][codacy img]][codacy]
 
 ## Release
 [![][npmbadge img]][npmbadge]
@@ -34,8 +31,6 @@ ShaneKing is released under [MIT][].
 [shaneking.org]: http://shaneking.org/
 
 
-[versioneye]:https://www.versioneye.com/user/projects/56fa93a735630e0034fda5fb
-[versioneye img]:https://www.versioneye.com/user/projects/56fa93a735630e0034fda5fb/badge.svg
 [david]:https://david-dm.org/ShaneKing/gulp-sk-i18n
 [david img]:https://david-dm.org/ShaneKing/gulp-sk-i18n.svg
 [davidDev]:https://david-dm.org/ShaneKing/gulp-sk-i18n#info=devDependencies
@@ -50,8 +45,6 @@ ShaneKing is released under [MIT][].
 
 [codecov]:https://codecov.io/github/ShaneKing/gulp-sk-i18n?branch=mirror
 [codecov img]:https://codecov.io/github/ShaneKing/gulp-sk-i18n/coverage.svg?branch=mirror
-[codacy]:https://www.codacy.com/app/ShaneKing/gulp-sk-i18n
-[codacy img]:https://api.codacy.com/project/badge/grade/2d74f2fcacf34466b33da168bb732f44
 [saucelabs]:https://saucelabs.com/u/ShaneKing
 [saucelabs img]:https://saucelabs.com/browser-matrix/ShaneKing.svg
 

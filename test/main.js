@@ -13,10 +13,10 @@ var File = gUtil.File;
 describe('gulp-sk-i18n', function () {
 
   function jsonNodeParser(jsonObject, existPath, pathObjects) {
-    let pathObject = {};
+    var pathObject = {};
     Object.keys(jsonObject).forEach(path => {
       if (path === '/') {
-        let rootObject = jsonObject[path];
+        var rootObject = jsonObject[path];
         Object.keys(rootObject).forEach(key => {
           pathObject[key] = rootObject[key];
         });
