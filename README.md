@@ -1,6 +1,23 @@
 # [ShaneKing I18N for Gulp][]
 More to see [shaneking.org][].
 
+## Installation
+Install package with NPM and add it to your development dependencies:
+
+`npm install --save-dev gulp-sk-i18n`
+
+## Usage
+```js
+var gulp = require('gulp'),
+  skI18n = require('./index');
+
+gulp.task('default', function () {
+  return gulp.src(['test/json/codes_en_US.json','test/json/codesAddress_en_US.json','test/json/i18n_en_US.json'])
+    .pipe(skI18n({folderMapping:{codesAddress:'codes'}}))
+    .pipe(gulp.dest('test/json/'))
+});
+```
+
 ## Dependencies
 [![][david img]][david]
 [![][davidDev img]][davidDev]
