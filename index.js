@@ -6,6 +6,7 @@ var Buffer = require('buffer').Buffer;
 var crypto = require('crypto');
 var gUtil = require('gulp-util');
 var path = require('path');
+var I18N = require('sk-l10n').I18N;
 var through = require('through2');
 
 var File = gUtil.File;
@@ -27,29 +28,6 @@ module.exports = function (opt) {
   var files = [];
   var folderLanguageHashObject = {};
   var folderLanguageHashFile = {};
-
-  function jsonNodeParser(jsonObject, existPath, pathObjects) {
-    var pathObject = {};
-    Object.keys(jsonObject).forEach(path => {
-      if (path === '/') {
-        var rootObject = jsonObject[path];
-        Object.keys(rootObject).forEach(key => {
-          pathObject[key] = rootObject[key];
-        });
-      } else if (path.skEndWith('/')) {
-        pathObjects[existPath + (path.skStartWith('/') ? path : ('/' + path))] = jsonObject[path];
-      } else if (path.skStartWith('/')) {
-        jsonNodeParser(jsonObject[path], existPath + path, pathObjects);
-      } else {
-        pathObject[path] = jsonObject[path];
-      }
-    });
-    // if (Object.keys(pathObject).length > 0) {
-    //   pathObjects[existPath + '/'] = pathObject;
-    // }
-    //Always generate path
-    pathObjects[existPath + '/'] = pathObject;
-  }
 
   function bufferContents(file, enc, cb) {
     // ignore empty files
@@ -80,7 +58,7 @@ module.exports = function (opt) {
 
     var jsonObject = JSON.parse(file.contents.toString());
     var pathObjects = {};
-    jsonNodeParser(jsonObject, '', pathObjects);
+    I18N.jsonNodeParser(jsonObject, '', pathObjects);
     Object.keys(pathObjects).forEach(function (pathStr) {
       var strContent = JSON.stringify(pathObjects[pathStr]);
       var hashValue = crypto.createHash(opt.hashAlgorithm).update(strContent).digest('hex').slice(0, opt.hashLength);

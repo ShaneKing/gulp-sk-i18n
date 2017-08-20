@@ -1,7 +1,7 @@
 {
   "name": "gulp-sk-i18n",
   "description": "ShaneKing I18N for Gulp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/ShaneKing/gulp-sk-i18n",
   "license": "MIT",
   "author": {
@@ -38,7 +38,7 @@
   "dependencies": {
     "crypto": "^0.0.3",
     "gulp-util": "^3.0.7",
-    "sk-polyfill": "^0.0.10",
+    "sk-l10n": "^0.0.5",
     "through2": "^2.0.1"
   },
   "devDependencies": {
