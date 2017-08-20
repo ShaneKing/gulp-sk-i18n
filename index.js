@@ -1,7 +1,5 @@
 'use strict';
 
-require('sk-polyfill');
-
 var Buffer = require('buffer').Buffer;
 var crypto = require('crypto');
 var gUtil = require('gulp-util');
