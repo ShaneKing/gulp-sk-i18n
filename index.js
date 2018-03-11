@@ -4,7 +4,7 @@ var Buffer = require('buffer').Buffer;
 var crypto = require('crypto');
 var gUtil = require('gulp-util');
 var path = require('path');
-var I18N = require('sk-l10n').I18N;
+var Mesgs = require('sk-js').Mesgs;
 var through = require('through2');
 
 var File = gUtil.File;
@@ -56,7 +56,7 @@ module.exports = function (opt) {
 
     var jsonObject = JSON.parse(file.contents.toString());
     var pathObjects = {};
-    I18N.jsonNodeParser(jsonObject, '', pathObjects);
+    Mesgs.jsonNodeParser(jsonObject, '', pathObjects);
     Object.keys(pathObjects).forEach(function (pathStr) {
       var strContent = JSON.stringify(pathObjects[pathStr]);
       var hashValue = crypto.createHash(opt.hashAlgorithm).update(strContent).digest('hex').slice(0, opt.hashLength);

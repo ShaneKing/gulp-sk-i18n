@@ -38,7 +38,7 @@
   "dependencies": {
     "crypto": "^0.0.3",
     "gulp-util": "^3.0.7",
-    "sk-l10n": "^0.0.5",
+    "sk-js": "^0.2.0",
     "through2": "^2.0.1"
   },
   "devDependencies": {
