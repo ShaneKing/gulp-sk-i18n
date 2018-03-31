@@ -7,7 +7,7 @@ var fs = require('fs');
 var gulp = require('gulp');
 var gUtil = require('gulp-util');
 var should = require('should');
-var I18N = require('sk-l10n').I18N;
+var Mesgs = require('sk-js').Mesgs;
 
 var File = gUtil.File;
 
@@ -17,16 +17,16 @@ describe('gulp-sk-i18n', function () {
     describe('i18n', function () {
 
       var file, check, contentPathObjects = {};
-      
+
       beforeEach(function () {
         file = new File({
-          path: 'test/json/i18n_en_US.json',
-          contents: fs.readFileSync('test/json/i18n_en_US.json')
+          path: './testjson/i18n_en_US.json',
+          contents: fs.readFileSync('./test/json/i18n_en_US.json')
         });
 
         var jsonObject = JSON.parse(file.contents.toString());
         var pathObjects = {};
-        I18N.jsonNodeParser(jsonObject, '', pathObjects);
+        Mesgs.jsonNodeParser(jsonObject, '', pathObjects);
         Object.keys(pathObjects).forEach(function (validPath) {
           var strContent = JSON.stringify(pathObjects[validPath]);
           var hashValue = crypto.createHash('md5').update(strContent).digest('hex').slice(0, 8);
@@ -50,7 +50,7 @@ describe('gulp-sk-i18n', function () {
         check(stream, done, function (newFile) {
           var strContent = String(newFile.contents);
           if (contentPathObjects[strContent]) {
-            strContent.should.equal(fs.readFileSync('test/json/i18n' + contentPathObjects[strContent] + '_en_US.json', 'utf8'));
+            strContent.should.equal(fs.readFileSync('./test/json/i18n' + contentPathObjects[strContent] + '_en_US.json', 'utf8'));
           }
         });
       });
