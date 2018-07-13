@@ -3,7 +3,7 @@
   "description": "ShaneKing I18N for Gulp",
   "version": "0.0.4",
   "homepage": "https://github.com/ShaneKing/gulp-sk-i18n",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": {
     "name": "ShaneKing",
     "email": "github@azolla.org",
@@ -18,8 +18,8 @@
   },
   "licenses": [
     {
-      "type": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
+      "type": "Apache-2.0",
+      "url": "https://opensource.org/licenses/Apache-2.0"
     }
   ],
   "scripts": {
