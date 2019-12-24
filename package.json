@@ -1,0 +1,57 @@
+{
+  "name": "gulp-sk-i18n",
+  "description": "ShaneKing I18N for Gulp",
+  "version": "0.0.4",
+  "homepage": "https://github.com/ShaneKing/gulp-sk-i18n",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "ShaneKing",
+    "email": "github@azolla.org",
+    "url": "http://shaneking.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ShaneKing/gulp-sk-i18n.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ShaneKing/gulp-sk-i18n/issues"
+  },
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "https://opensource.org/licenses/Apache-2.0"
+    }
+  ],
+  "scripts": {
+    "test": "istanbul cover node_modules/mocha/bin/_mocha && codecov"
+  },
+  "files": [
+    "index.js",
+    "LICENSE"
+  ],
+  "main": "index.js",
+  "keywords": [
+    "ShaneKing",
+    "SK",
+    "gulpplugin"
+  ],
+  "dependencies": {
+    "crypto": "^0.0.3",
+    "gulp-util": "^3.0.7",
+    "sk-js": "^0.2.4",
+    "through2": "^2.0.1"
+  },
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "codecov": "^1.0.1",
+    "commitplease": "latest",
+    "gulp": "^3.9.1",
+    "istanbul": "^0.4.3",
+    "jsdom": "^9.2.1",
+    "mocha": "^2.5.3",
+    "should": "^9.0.2"
+  },
+  "commitplease": {
+    "nohook": true
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "Search": "搜索",
+  "Submit": "提交",
+  "Theme": "主题",
+  "/dashboard": {
+    "Failed_Times": "失败次数",
+    "Success_Times": "成功次数",
+    "Total_Users": "用户总数",
+    "User_Charts": "用户图表"
+  },
+  "/mail": {
+    "Date_of_posting": "发件日期",
+    "Received_date": "收件日期",
+    "Sender": "发件人",
+    "Subject": "主题"
+  },
+  "/user": {
+    "User_Name": "登录名",
+    "/resetpwd": {
+      "New_Password":"新密码",
+      "Old_Password":"旧密码"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "Search": "Search",
+  "Submit": "Submit",
+  "Theme": "Theme",
+  "/dashboard": {
+    "Failed_Times": "Failed Times",
+    "Success_Times": "Success Times",
+    "Total_Users": "Total Users",
+    "User_Charts": "User Charts"
+  },
+  "/mail": {
+    "Date_of_posting": "Date of posting",
+    "Received_date": "Received date",
+    "Sender": "Sender",
+    "Subject": "Subject"
+  },
+  "/user": {
+    "User_Name": "User Name",
+    "/resetpwd": {
+      "New_Password":"New Password",
+      "Old_Password":"Old Password"
+    }
+  }
+}
